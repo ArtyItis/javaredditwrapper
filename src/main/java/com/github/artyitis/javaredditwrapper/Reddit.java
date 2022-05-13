@@ -74,6 +74,7 @@ public class Reddit {
         }
     }
 
+    @SuppressWarnings("unchecked")
     public List<RedditPost> getListing(String subredditName, Listings listings, int limit) {
         int count = 0;
         int found;
