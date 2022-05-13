@@ -19,7 +19,7 @@ public class RedditPost {
     public RedditPost(JSONObject redditPostJSON) {
         JSONObject data = (JSONObject) redditPostJSON.get("data");
         title = (String) data.get("title");
-        permalink = (String) data.get("permanlink");
+        permalink = "https://www.reddit.com" + (String) data.get("permalink");
         url = (String) data.get("url");
         url_overridden_by_dest = (String) data.get("url_overridden_by_dest");
         fallback_url = (String) data.get("fallback_url");
@@ -42,6 +42,10 @@ public class RedditPost {
         score = ((Number) data.get("score")).intValue();
 
         upvote_ratio = ((Number) data.get("upvote_ratio")).floatValue();
+    }
+
+    public boolean containsFile() {
+        return is_video || post_hint.equalsIgnoreCase("image");
     }
 
     public SubReddit getSubReddit() {
