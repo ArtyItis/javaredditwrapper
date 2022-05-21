@@ -1,7 +1,5 @@
 package com.github.artyitis.javaredditwrapper;
 
-import com.github.artyitis.javaredditwrapper.subreddit.SubReddit;
-
 import org.json.simple.JSONObject;
 
 public class RedditPost {
@@ -10,8 +8,7 @@ public class RedditPost {
      * -----------------------------------------------------------------------------
      * if post_hint isEquals image get image url form url or url_overridden_by_dest
      */
-    private SubReddit subReddit;
-    private String title, permalink, url, url_overridden_by_dest, fallback_url, id, author, post_hint;
+    private String title, permalink, url, url_overridden_by_dest, fallback_url, id, author, post_hint, subReddit;
     private boolean is_video, stickied, hidden, is_original_content, is_created_from_ads_ui, spoiler, over_18;
     private int downs, ups, num_comments, total_awards_received, score;
     private float upvote_ratio;
@@ -26,6 +23,7 @@ public class RedditPost {
         id = (String) data.get("id");
         author = (String) data.get("author");
         post_hint = (String) data.get("post_hint");
+        subReddit = (String) data.get("subreddit");
 
         is_video = (boolean) data.get("is_video");
         stickied = (boolean) data.get("stickied");
@@ -44,12 +42,8 @@ public class RedditPost {
         upvote_ratio = ((Number) data.get("upvote_ratio")).floatValue();
     }
 
-    public boolean containsFile() {
-        return is_video || post_hint.equalsIgnoreCase("image");
-    }
-
-    public SubReddit getSubReddit() {
-        return this.subReddit;
+    public String getSubReddit() {
+        return subReddit;
     }
 
     public String getTitle() {
