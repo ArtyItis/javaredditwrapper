@@ -1,7 +1,7 @@
 package com.github.artyitis.javaredditwrapper.subreddit;
 
 public enum SubReddit_Type {
-    PUBLIC;
+    PUBLIC, RESTRICTED;
 
     /**
      * To string.
